@@ -1,0 +1,7 @@
+{
+  "name": "DDmasterManager",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
