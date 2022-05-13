@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'DDmasterManager',
+  appName: 'mastermanager',
   webDir: 'www',
   bundledWebRuntime: false
 };
