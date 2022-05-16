@@ -1,0 +1,31 @@
+<ng-container *ngIf="items.length==0; else emptyadventure">
+  <ion-card  *ngFor="let adventure of items" class="ion-padding-horizontal">
+    <h1>
+      <ion-text color="primary">
+          Titolo:
+      </ion-text>
+       {{adventure.title}}
+    </h1>
+    <p>
+      <ion-text color="primary">
+          Descrizione: 
+      </ion-text>{{adventure.description}}
+    </p>
+  </ion-card>
+</ng-container>
+
+<ng-template #emptyadventure>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Avventure</ion-card-subtitle>
+      <ion-card-title>Costruisci la tua avventura</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      L'avventura è il nodo principale dell'applicazione: può essere pensata come un 
+      <strong>
+        insieme
+      </strong> di tenti componenti intrecciati tra loro come ad esempio (png, insediamenti, prove abilità e altro)
+    </ion-card-content>
+  </ion-card>
+</ng-template>

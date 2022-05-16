@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-
-/**Avessi voluto usare Cloud firestore */
-import { doc, docData, Firestore, collection, getDoc, collectionData } from '@angular/fire/firestore';
-
-import { getDatabase, ref, set } from "firebase/database";
-
-
-
+import { Event, RouterEvent, Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -23,43 +17,23 @@ export class AppComponent {
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-
-  item$: Observable<any>;
-  private db = getDatabase()
-
-  constructor( private firestore: Firestore) {
-  }
-    
-    
+  id?: number
+  menu_visible!:boolean
   
 
-  ngOnInit(){
-
-    /**Avessi voluto usare cloud firestore */
-    // console.log(this.db)
-
-    // const userDocRef = doc(this.firestore, "ciccio/2OWhX4yNlTEoKSinw2MF");
-    // console.log("iiii", docData(userDocRef))
-    // docData(userDocRef).subscribe(el=>{
-    //   console.log(el)
-    // });
-
-    // const co = collection(this.firestore, "ciccio");
-    // const dio = collectionData(co);
-    // dio.subscribe(el=>{
-    //   console.log(el)
-    // });
-    
-    // console.log(co)
+  constructor(
+    private router:Router,
+  ) {
   }
-
-
-  add(){
-    set(ref(this.db, 'users/'), {
-      username: "name",
-      email: "email",
-      profile_picture : "imageUrl"
-    });
+    
+  ngOnInit(){
+  //   this.router.events.pipe(
+  //     filter((e: Event): e is RouterEvent => e instanceof RouterEvent)
+  //  ).subscribe((e: RouterEvent) => {
+  //   const arr_url = e.url.match(/\d+/g);
+  //   arr_url ? this.id = Number(arr_url[0]): null
+  //   this.menu_visible = this.id ? true:false
+  //  });
   }
 
 }

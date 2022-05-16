@@ -1,0 +1,17 @@
+<app-headbar [title]="'Avventure'"></app-headbar>
+
+<ion-content>
+  <div [ngSwitch]="conditionExpression">
+      <div *ngSwitchCase="expression">
+          <app-adventure-item *ngIf="items" [items]="items"></app-adventure-item>
+      </div>
+      <div *ngSwitchDefault>
+        
+      </div>
+  </div>
+</ion-content>
+
+
+<ion-footer>
+    <app-createbutton [path]="buttontitle"></app-createbutton>
+</ion-footer>

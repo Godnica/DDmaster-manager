@@ -10,15 +10,19 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 
+import { SharedComponentsModule } from './sharedComponents/shared-components.module';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
-     IonicModule.forRoot(),
-      AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)),
-       provideFirestore(() => getFirestore())],
+    IonicModule.forRoot(),
+    AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    SharedComponentsModule
+  ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
