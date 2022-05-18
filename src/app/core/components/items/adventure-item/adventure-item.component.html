@@ -1,11 +1,16 @@
-<ng-container *ngIf="items.length==0; else emptyadventure">
-  <ion-card  *ngFor="let adventure of items" class="ion-padding-horizontal">
+<ng-container *ngIf="adventures.length!=0; else emptyadventure">
+  <ion-card  *ngFor="let adventure of adventures" class="ion-padding-horizontal">
+    <ion-item>
+      <ion-button slot="end" (click)="delete(adventure.id)">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>
     <h1>
       <ion-text color="primary">
           Titolo:
       </ion-text>
        {{adventure.title}}
     </h1>
+    </ion-item>
     <p>
       <ion-text color="primary">
           Descrizione: 

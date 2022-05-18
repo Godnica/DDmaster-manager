@@ -1,9 +1,9 @@
 <app-headbar [title]="'Avventure'"></app-headbar>
 
 <ion-content>
-  <div [ngSwitch]="conditionExpression">
+  <div [ngSwitch]="conditionExpression" *ngIf="initilizated">
       <div *ngSwitchCase="expression">
-          <app-adventure-item *ngIf="items" [items]="items"></app-adventure-item>
+          <app-adventure-item [items]="items"></app-adventure-item>
       </div>
       <div *ngSwitchDefault>
         
@@ -13,5 +13,5 @@
 
 
 <ion-footer>
-    <app-createbutton [path]="buttontitle"></app-createbutton>
+    <app-createbutton [path]="buttontitle" (buttonClicked)="createItem($event)"></app-createbutton>
 </ion-footer>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crea avventura     
+    </ion-title>
+    
+    <ion-button slot="end" (click)="dismissModal()" fill="clear">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-button>
+
+  </ion-toolbar>
+ 
+</ion-header>
+
+
+<ion-content>
+
+  <form [formGroup]=adventureForm>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Titolo: 
+        </ion-label>
+        <ion-input formControlName="title" value={{selected?.title}}></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Descrizione: 
+        </ion-label>
+        <ion-input formControlName="description" value={{selected?.description}}></ion-input>
+      </ion-item>
+    </ion-list>  
+  </form>
+</ion-content>
+
+<ion-footer>
+    <ion-button expand="block" (click)="insertAdv()">Crea avventura</ion-button>
+</ion-footer>
