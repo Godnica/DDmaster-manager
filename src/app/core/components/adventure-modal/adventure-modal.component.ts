@@ -27,7 +27,11 @@ export class AdventureModalComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+   console.log("--->", this.selected);
+   if(this.selected){
+     this.adventureForm.get('title').setValue(this.selected.title)
+     this.adventureForm.get('description').setValue(this.selected.description)
+   }
   }
 
 
@@ -38,9 +42,17 @@ export class AdventureModalComponent implements OnInit {
   }
 
   insertAdv() {
-    let newadv = this.adventureForm.value;
-    this.fireDb.add("/adventures", newadv);
-    this.dismissModal(true)
+    if(this.selected){
+      console.log(this.adventureForm.value);
+      this.fireDb.update(`/adventures/${this.selected.id}`,
+      this.adventureForm.value
+      )
+      this.dismissModal(this.adventureForm.value)
+    }else{
+      let newadv = this.adventureForm.value;
+      this.fireDb.add("/adventures", newadv);
+      this.dismissModal(true)
+    }
   }
 }
 
