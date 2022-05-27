@@ -1,0 +1,42 @@
+<ng-container *ngIf="items && items?.length>0; else emptynotas">
+  <ion-card *ngFor="let item of items">
+    <ion-item>
+      <ion-button slot="end" (click)="delete(item)">
+        <ion-icon name="trash-outline"></ion-icon>  
+      </ion-button>
+      <ion-button slot="end" (click)="edit(item)">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+      
+      <ion-text color="primary">
+        Titolo:
+      </ion-text>{{item.title}}
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-text color="primary">
+          Descrizione:
+        </ion-text>
+         {{item.description}}
+      </ion-label>
+    </ion-item>
+  </ion-card>
+</ng-container>
+
+<ng-template #emptynotas>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Note</ion-card-subtitle>
+      <ion-card-title>Aggiungi una nota alla tua avventura</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Le note sono degli appunti, utili per ricordarsi a che punto si è arrivati nell'avventura, possono essere utilizzate per ricordarsi ache punto si è arrivati
+    </ion-card-content>
+  </ion-card>
+</ng-template>
+
+<ion-button slot="center" fill="none" expand="block" (click)="newNota()" >
+  <ion-icon name="add-circle-outline" size="large" color="primary"></ion-icon>
+</ion-button>
+

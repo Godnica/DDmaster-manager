@@ -12,6 +12,11 @@ import { AdventureItemComponent } from 'src/app/core/components/items/adventure-
 import { CreatebuttonComponent } from 'src/app/core/components/subcomponent/createbutton/createbutton.component';
 import { AdventureModalComponent } from 'src/app/core/components/adventure-modal/adventure-modal.component';
 
+
+import { NotasComponent } from 'src/app/core/components/items/notas/notas.component';
+import { NotasModalComponent } from 'src/app/core/components/notas-modal/notas-modal.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,10 +27,13 @@ import { AdventureModalComponent } from 'src/app/core/components/adventure-modal
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [ListPage, 
+  declarations: [
+    ListPage, 
     AdventureItemComponent,
     CreatebuttonComponent,
-    AdventureModalComponent
+    AdventureModalComponent,
+    NotasComponent,
+    NotasModalComponent
   ]
 })
 export class ListPageModule {}

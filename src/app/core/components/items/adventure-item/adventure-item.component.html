@@ -7,6 +7,9 @@
     <ion-button slot="end" (click)="editAsventure(adventure)"> 
       <ion-icon name="create-outline"></ion-icon>
     </ion-button>
+    <ion-button slot="end" (click)="goToAdventure(adventure)"> 
+      <ion-icon name="eye-outline"></ion-icon>
+    </ion-button>
     <h1>
       <ion-text color="primary">
           Titolo:
@@ -45,3 +48,7 @@
       <ion-button (click)="dismiss()">No</ion-button>
     </ng-template>
 </ion-modal>
+
+<ion-button slot="center" fill="none" expand="block" (click)="newAdv()" >
+  <ion-icon name="add-circle-outline" size="large" color="primary"></ion-icon>
+</ion-button>

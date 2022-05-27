@@ -1,17 +1,15 @@
-<app-headbar [title]="'Avventure'"></app-headbar>
+<app-headbar [title]="title"></app-headbar>
 
 <ion-content>
-  <div [ngSwitch]="conditionExpression" *ngIf="initilizated">
-      <div *ngSwitchCase="expression">
-          <app-adventure-item [items]="items"></app-adventure-item>
+  <div [ngSwitch]="path" *ngIf="initilizated">
+      <div *ngSwitchCase="'adventures'">
+          <app-adventure-item [items]="items" (newItem)="reload()"></app-adventure-item>
       </div>
+      <div *ngSwitchCase="'notas'">
+        <app-notas [items]="items" [idAdv]="idAdv"></app-notas>
+    </div>
       <div *ngSwitchDefault>
         
       </div>
   </div>
 </ion-content>
-
-
-<ion-footer>
-    <app-createbutton [path]="buttontitle" (buttonClicked)="createItem($event)"></app-createbutton>
-</ion-footer>

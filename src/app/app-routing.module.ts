@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: ':param',
     loadChildren: () => import('./pages/list/list.module').then( m => m.ListPageModule)
-  }
+  },
+  {
+    path: ':param/:id_adv',
+    loadChildren: () => import('./pages/list/list.module').then( m => m.ListPageModule)
+  },
 
 ];
 
