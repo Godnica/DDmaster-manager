@@ -35,7 +35,7 @@ export class AdventureModalComponent implements OnInit {
   }
 
 
-  dismissModal(v:boolean){
+  dismissModal(v?:boolean){
     v?
     this.modalController.dismiss(v):
     this.modalController.dismiss()

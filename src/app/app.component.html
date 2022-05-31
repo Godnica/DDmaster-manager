@@ -21,7 +21,7 @@
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url+'/'+idAdv]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon ? p.icon + '-outline' : null" [md]="p.icon ? p.icon + '-sharp':null" src={{p.src}}></ion-icon>
+              <ion-icon slot="start" [ios]="p.icon ? p.icon + '-outline' : null" [md]="p.icon ? p.icon + '-sharp':null" src={{p.url}}></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
@@ -31,8 +31,8 @@
           <ion-list-header>Labels</ion-list-header>
 
           
-            <ion-item  *ngFor="let label of labels" lines="none" routerDirection="root" [routerLink]="[label.url+'/'+id]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="label.icon ? label.icon + '-outline' : null" [md]="label.icon ? label.icon + '-sharp':null" src={{label.src}}></ion-icon>
+            <ion-item  *ngFor="let label of labels" lines="none" routerDirection="root" [routerLink]="[label.url+'/'+idAdv]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="label.icon ? label.icon + '-outline' : null" [md]="label.icon ? label.icon + '-sharp':null" src={{label.url}}></ion-icon>
               <ion-label>{{ label.title }}</ion-label>
             </ion-item>
   

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { child, get, getDatabase, push, query, ref, refFromURL, remove, set } from "firebase/database";
+import { child, get, getDatabase, push, ref, remove, set } from "firebase/database";
 import { Payload } from '../models/payload.model';
 
 @Injectable({
@@ -15,7 +15,8 @@ export class FiredbService {
   add(path: string, payload:Payload){
     const postList = ref(this.db, path);
     const newPostref = push(postList)
-    set(newPostref, payload);
+    set(newPostref, payload)
+    return newPostref
   }
 
   collection(path: string){

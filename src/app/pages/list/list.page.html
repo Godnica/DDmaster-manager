@@ -7,8 +7,14 @@
       </div>
       <div *ngSwitchCase="'notas'">
         <app-notas [items]="items" [idAdv]="idAdv"></app-notas>
-    </div>
-      <div *ngSwitchDefault>
+      </div>
+      <div *ngSwitchCase="'skills'">
+        <app-skills [items]="items" [idAdv]="idAdv"></app-skills>
+      </div>
+      <div *ngSwitchCase="'badges'">
+        <app-badges [items]="items" [idAdv]="idAdv"></app-badges>
+      </div>
+    <div *ngSwitchDefault>
         
       </div>
   </div>

@@ -15,6 +15,8 @@ import { AdventureModalComponent } from 'src/app/core/components/adventure-modal
 
 import { NotasComponent } from 'src/app/core/components/items/notas/notas.component';
 import { NotasModalComponent } from 'src/app/core/components/notas-modal/notas-modal.component';
+import { SkillsComponent } from 'src/app/core/components/items/skills/skills.component';
+import { BadgesComponent } from 'src/app/core/components/items/badges/badges.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { NotasModalComponent } from 'src/app/core/components/notas-modal/notas-m
     CreatebuttonComponent,
     AdventureModalComponent,
     NotasComponent,
-    NotasModalComponent
+    NotasModalComponent,
+    SkillsComponent,
+    BadgesComponent
   ]
 })
 export class ListPageModule {}

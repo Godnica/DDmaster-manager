@@ -36,27 +36,23 @@ export class NotasModalComponent implements OnInit {
 
   }
 
-  dismissModal(v: any){
+  dismissModal(v?: any){
     v?
     this.modalController.dismiss(v):
     this.modalController.dismiss()
   }
 
   insertNota(){
-    const newNota = this.notasForm.value  
-
-    console.log(newNota);
-
-    debugger
-
+    let newNota = this.notasForm.value;
     if(!this.selected){
-      this.fireDb.add("/notas", newNota);
-    }else{
-      this.fireDb.update("/notas/"+this.selected.id, newNota)
-    }
+      this.fireDb.add("/notas", newNota).then((el:any)=>{
+        newNota.id = el._path.pieces_[1]
+      });
 
-    this.dismissModal({item: newNota});
-    
+    }else{
+      this.fireDb.update("/notas/"+this.selected.id, newNota);
+    }
+    this.dismissModal({item: newNota});    
   }
 
 }

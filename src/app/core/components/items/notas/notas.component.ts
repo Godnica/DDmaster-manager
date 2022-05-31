@@ -33,6 +33,7 @@ export class NotasComponent implements OnInit {
   }
 
   async edit(item){
+    const id = item.id
     const modal = await this.modal.create({
       component:  NotasModalComponent,
       componentProps: {
@@ -43,7 +44,12 @@ export class NotasComponent implements OnInit {
 
        modal.onDidDismiss().then(l=>{
       if(l.data){
-        this.ngOnInit()
+        this.items.forEach((el,index)=>{
+          if(el.id===item.id){
+            const update = {id: item.id, ...l.data.item};
+            this.items[index]= update
+          }
+        })        
       }
     })
     return await modal.present();
@@ -59,7 +65,7 @@ export class NotasComponent implements OnInit {
 
        modal.onDidDismiss().then(l=>{
       if(l.data){
-       this.ngOnInit()
+       this.items.push(l.data.item)
       }
     })
     return await modal.present();

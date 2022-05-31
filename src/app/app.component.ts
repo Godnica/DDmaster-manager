@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Event, RouterEvent, Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Event, RouterEvent, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -17,7 +16,10 @@ export class AppComponent {
     { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public labels = [
+    { title: 'Calendario', url: '/notas/', icon: 'calendar' },
+    { title: 'Controlli', url: '/badges/', icon: 'cog' }
+  ];
   idAdv
   menu_visible!:boolean;
 
@@ -35,6 +37,10 @@ export class AppComponent {
       this.idAdv = e.url.split("/")[2];
       this.menu_visible = this.idAdv ? true : false
     });
+  }
+
+  goHome(){
+    this.router.navigate(["adventures"])
   }
 
 }
