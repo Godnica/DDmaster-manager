@@ -11,6 +11,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 
 import { SharedComponentsModule } from './sharedComponents/shared-components.module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SharedComponentsModule } from './sharedComponents/shared-components.mod
     IonicModule.forRoot(),
     AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    SharedComponentsModule
+    SharedComponentsModule,
+    CommonModule
   ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

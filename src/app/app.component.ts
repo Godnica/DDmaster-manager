@@ -17,7 +17,7 @@ export class AppComponent {
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
   public labels = [
-    { title: 'Calendario', url: '/notas/', icon: 'calendar' },
+    { title: 'Calendario', url: '//', icon: 'calendar' },
     { title: 'Controlli', url: '/badges/', icon: 'cog' }
   ];
   idAdv

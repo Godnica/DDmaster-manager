@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { AdventureModalComponent } from 'src/app/core/components/adventure-modal/adventure-modal.component';
 import { NotasComponent } from 'src/app/core/components/items/notas/notas.component';
 import { NotasModalComponent } from 'src/app/core/components/notas-modal/notas-modal.component';
+import { ControllerService } from 'src/app/core/services/controller.service';
 
 @Component({
   selector: 'app-list',
@@ -25,9 +26,19 @@ export class ListPage implements OnInit {
     private router: Router,
     private fireDb: FiredbService,
     private modal: ModalController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private controller: ControllerService
   ) {
-
+    this.fireDb.collection('badges').then(badges=>{
+      let bpayload = []
+      Object.keys(badges.val()).forEach(element => {
+        console.log(element)
+        if(badges.val()[element].id_adv===this.idAdv){
+          bpayload.push(badges.val()[element])
+        }       
+      })
+      this.controller.setBadges(bpayload);
+    })
   }
 
   ngOnInit() {

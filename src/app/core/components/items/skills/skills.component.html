@@ -1,3 +1,28 @@
-<p>
-  skills works!
-</p>
+<ion-card *ngIf="!items || items.length === 0">
+  <ion-card-header>
+    <ion-card-title>
+      Aggiungi un'abilità alla tua avventura!
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    Le abilità realizzate in questa pagina sono considerate come dei modelli che possono essere usati nelle varie componenti.
+    <ul>
+      <li>
+        Un'abilità ha diversi livelli di successo o insuccesso.
+      </li>
+      <li>
+        Un'abilità può avere un inpatto sui controlli dell'avventura a seconda dei livelli di successo o insuccesso
+      </li>
+      <li>
+        Un'abilità può essere ripetibile, quindi può essere usata più volte nell'avventura. Ma può essere anche non ripetibile.
+        Si può utilizzare un modello di un abilità ripetibile in un componente e poi costomizzarne il compoetamento, all'interno.
+      </li>
+    </ul>
+  </ion-card-content>
+</ion-card>
+
+
+
+<ion-button slot="center" fill="none" expand="block" (click)="newAdventure()" >
+  <ion-icon name="add-circle-outline" size="large" color="primary"></ion-icon>
+</ion-button>

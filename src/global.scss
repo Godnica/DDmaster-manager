@@ -24,3 +24,37 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+ion-modal{
+    --height: 100vh;
+}
+
+
+.skills-interface {
+    .Forza{
+        --color: #ec0e06;
+        --color-hover: #a11d14;
+    };
+
+    .Destrezza{
+        --color: #2ec919;
+        --color-hover: #147238;
+    }
+
+    .Saggezza{
+        --color: #c919c9;
+        --color-hover: #721472;
+    }
+
+    .Intelligenza{
+        --color: #195fc9;
+        --color-hover: #2d1472;
+    }
+
+    .Carisma{
+        --color: #646b00;
+        --color-hover: #222101;
+    }
+
+  }

@@ -17,7 +17,9 @@ import { NotasComponent } from 'src/app/core/components/items/notas/notas.compon
 import { NotasModalComponent } from 'src/app/core/components/notas-modal/notas-modal.component';
 import { SkillsComponent } from 'src/app/core/components/items/skills/skills.component';
 import { BadgesComponent } from 'src/app/core/components/items/badges/badges.component';
-
+import { FormSkillComponent } from 'src/app/core/components/forms/skill/skill.component';
+import { PophoverDifficultyComponent } from 'src/app/core/components/subcomponent/pophover-difficulty/pophover-difficulty.component';
+import { PophoverBadgesComponent } from 'src/app/core/components/subcomponent/pophover-badges/pophover-badges.component';
 
 @NgModule({
   imports: [
@@ -27,7 +29,8 @@ import { BadgesComponent } from 'src/app/core/components/items/badges/badges.com
     ListPageRoutingModule,
     SharedComponentsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   declarations: [
     ListPage, 
@@ -37,7 +40,13 @@ import { BadgesComponent } from 'src/app/core/components/items/badges/badges.com
     NotasComponent,
     NotasModalComponent,
     SkillsComponent,
-    BadgesComponent
+    BadgesComponent,
+    FormSkillComponent,
+    PophoverDifficultyComponent,
+    PophoverBadgesComponent
+  ],
+  entryComponents: [
+    FormSkillComponent
   ]
 })
 export class ListPageModule {}

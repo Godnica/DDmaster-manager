@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-button slot="end" fill="clear" (click)="dimiss()">
+      <ion-icon name="close-outline" color="light"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  
+  <form [formGroup]=formSkill>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Titolo: 
+        </ion-label>
+        <ion-input formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Descrizione: 
+        </ion-label>
+        <ion-textarea *ngIf="ready" placeholder="In che cosa consiste la prova" formControlName="description" autoGrow="true"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-select placeholder="Seleziona" class="interfaceOptions" interface="popover" formControlName="type">      
+          <ion-select-option *ngFor="let item of skillsModels" class="{{item.car}}">
+              {{item.name}}
+          </ion-select-option>
+        </ion-select>
+        <ion-item slot="end" lines="none">
+          <ion-label>
+            CD:
+          </ion-label>
+          <ion-input formControlName="cd">
+          </ion-input>
+          <ion-button (click)="setDifficultyPop()" fill="none">
+            <ion-icon name="speedometer-outline"></ion-icon>
+          </ion-button>
+        </ion-item>       
+      </ion-item>
+      <ion-item>
+        <ion-label>Attiva</ion-label>
+        <ion-toggle [(ngModel)]="active" formControlName="active"></ion-toggle>
+        <ion-label>Ripetibile</ion-label>
+        <ion-toggle [(ngModel)]="active" formControlName="ripetible"></ion-toggle>
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-label>
+        Successo: 
+      </ion-label>
+      <ion-textarea *ngIf="ready" placeholder="Descizione successo prova" formControlName="success" autoGrow="true"></ion-textarea>
+      <ion-button class="ion-margin-top" fill="none" (click)="showPopBadge('success')">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </form>
+</ion-content>
