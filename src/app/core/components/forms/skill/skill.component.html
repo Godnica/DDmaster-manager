@@ -46,17 +46,17 @@
         <ion-label>Attiva</ion-label>
         <ion-toggle [(ngModel)]="active" formControlName="active"></ion-toggle>
         <ion-label>Ripetibile</ion-label>
-        <ion-toggle [(ngModel)]="active" formControlName="ripetible"></ion-toggle>
+        <ion-toggle [(ngModel)]="repetible" formControlName="ripetible"></ion-toggle>
       </ion-item>
     </ion-list>
-    <ion-item>
-      <ion-label>
-        Successo: 
-      </ion-label>
-      <ion-textarea *ngIf="ready" placeholder="Descizione successo prova" formControlName="success" autoGrow="true"></ion-textarea>
-      <ion-button class="ion-margin-top" fill="none" (click)="showPopBadge('success')">
-        <ion-icon name="add-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
+
+    <app-redeemer 
+      [label]="'Successo'"
+      [placeholder]="'Descrivi cosa succede in caso di successo'"
+      (badgeOutput)="outputFromRedeemer($event, 'success')"
+      
+    ></app-redeemer>
+
+
   </form>
 </ion-content>

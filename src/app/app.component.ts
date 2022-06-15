@@ -11,14 +11,15 @@ export class AppComponent {
   public appPages = [
     { title: 'Note', url: '/notas/', icon: 'mail' },
     { title: 'Abilità', url: '/skills/', icon: 'ear' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    // { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
+    // { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
+    // { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
+    // { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
   public labels = [
-    { title: 'Calendario', url: '//', icon: 'calendar' },
-    { title: 'Controlli', url: '/badges/', icon: 'cog' }
+    // { title: 'Calendario', url: '//', icon: 'calendar' },
+    { title: 'Controlli', url: '/badges/', icon: 'cog' },
+    { title: 'Gruppo', url: '/pg/', icon: 'people' }
   ];
   idAdv
   menu_visible!:boolean;
@@ -31,6 +32,7 @@ export class AppComponent {
   }
     
   ngOnInit(){
+
     this.router.events.pipe(
       filter((e: Event): e is RouterEvent => e instanceof RouterEvent)
    ).subscribe((e: RouterEvent) => {

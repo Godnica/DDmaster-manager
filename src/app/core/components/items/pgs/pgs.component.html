@@ -1,0 +1,65 @@
+<ion-card *ngIf="items.length==0; else pgCard">
+  <ion-card-header>
+    <ion-card-subtitle>Personaggi</ion-card-subtitle>
+    <ion-card-title>Il fulcro dell'avventura</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    I pg sono i protagonisti dell'avventura, attraverso questa sezione sarà possibile aggiungere, modificare e monitorare i pg.
+    <p>Ogni personaggio avrà il suo livello (Lvl) e la sua esperienza (Exp), questo pannello fa da riferimento per tutti i calcoli che avvengono all'interno dell'applicazione (difficoltà degli incontri, ecc ecc)</p>
+  </ion-card-content>
+</ion-card>
+
+<ng-template #pgCard>
+  <ion-card *ngFor="let item of items">
+    <ion-card-header>
+      <ion-card-subtitle>{{item.giocatore}}</ion-card-subtitle>
+      <ion-item lines="none">
+        <ion-card-title>{{item.name}}</ion-card-title>
+        <ion-button slot="end" (click)="edit(item)">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" (click)="delete(item)">
+          <ion-icon name="trash-outline"></ion-icon>  
+        </ion-button>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label>
+          <ion-text color="primary">
+            Livello:
+          </ion-text>
+          <ion-text>
+            {{item.level}}
+          </ion-text>
+        </ion-label>
+        <ion-label class="ion-float-left">
+          <ion-text color="primary" >
+            Esperienza:
+          </ion-text>
+          <ion-text>
+            {{item.exp}}
+          </ion-text>
+        </ion-label>
+        <ion-button (click)="assignCondiction(item)" fill="none">
+          <ion-text class="ion-float-right" >
+            Condizioni
+          </ion-text>
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <app-item-condiction *ngIf="item.conditions && item.conditions.length!=0" 
+      [condictions]="item.conditions"
+      [pg_id]="item.id"
+      (deleter)="deleteCondiction($event)"
+      ></app-item-condiction>
+    </ion-card-content>
+  </ion-card>
+</ng-template>
+
+
+
+
+<ion-button slot="center" fill="none" expand="block" (click)="createPg()">
+  <ion-icon name="add-circle-outline" size="large" color="primary"></ion-icon>
+</ion-button>

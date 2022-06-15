@@ -1,11 +1,11 @@
 <ng-container *ngIf="items && items?.length>0; else emptynotas">
   <ion-card *ngFor="let item of items">
     <ion-item>
-      <ion-button slot="end" (click)="delete(item)">
-        <ion-icon name="trash-outline"></ion-icon>  
-      </ion-button>
       <ion-button slot="end" (click)="edit(item)">
         <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" (click)="delete(item)">
+        <ion-icon name="trash-outline"></ion-icon>  
       </ion-button>
       
       <ion-text color="primary">
@@ -36,7 +36,7 @@
   </ion-card>
 </ng-template>
 
-<ion-button slot="center" fill="none" expand="block" (click)="newNota()" >
+<ion-button slot="center" fill="none" expand="block" (click)="newNota()">
   <ion-icon name="add-circle-outline" size="large" color="primary"></ion-icon>
 </ion-button>
 

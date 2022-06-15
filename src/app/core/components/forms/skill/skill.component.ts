@@ -5,6 +5,9 @@ import { FormBuilder } from '@angular/forms';
 import { PopoverController } from '@ionic/angular';
 import { PophoverDifficultyComponent } from '../../subcomponent/pophover-difficulty/pophover-difficulty.component';
 import { PophoverBadgesComponent } from '../../subcomponent/pophover-badges/pophover-badges.component';
+import { ControllerService } from 'src/app/core/services/controller.service';
+import { Badges } from 'src/app/core/models/badges.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-skill',
@@ -17,7 +20,17 @@ export class FormSkillComponent implements OnInit {
   ready: boolean = false;
   active: boolean = true;
   repetible: boolean = true;
-  skillsModels= utility.skills
+  skillsModels= utility.skills;
+  totalBadge:Array<Badges> = [];
+
+  private subs= new Subscription()
+
+  private popbadge = {
+    success: [],
+    fail:[],
+    critical_fail: [],
+    critical_success: [],
+  }
 
   public formSkill = this.fb.group({
     title: [''],
@@ -38,7 +51,8 @@ export class FormSkillComponent implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     private fb: FormBuilder,
-    private popoverCtrl: PopoverController
+    private popoverCtrl: PopoverController,
+    private controller: ControllerService,    
   ) { }
   
 
@@ -60,7 +74,6 @@ export class FormSkillComponent implements OnInit {
   }
 
   async setDifficultyPop(){
-    console.log("a")
     const pop = await this.popoverCtrl.create({
       component: PophoverDifficultyComponent
     })
@@ -74,15 +87,47 @@ export class FormSkillComponent implements OnInit {
   }
 
   async showPopBadge(path: string){
-    const pop = await this.popoverCtrl.create({
-      component: PophoverBadgesComponent
-    })
+    console.log(path);
+    const _badges = this.popbadge[path];
 
-    await pop.present()
+    this.subs.add(this.controller.BadgesArr.subscribe(async (badges)=>{
+      this.totalBadge = badges;
+      let badgeButton = [];
+      badges.forEach(el=>{
+        if(!_badges.find(b=>b.id===el.id)){
+          badgeButton.push(el)
+        }
+      })
 
-    pop.onDidDismiss().then(res => {
+      const pop = await this.popoverCtrl.create({
+        component: PophoverBadgesComponent,
+        componentProps: {
+          badges: badgeButton
+        }
+      })
+  
+      await pop.present()
+  
+      await pop.onDidDismiss().then(res => {
+        if(res.data) this.popbadge[path] = res.data;
+        this.popoverCtrl.getTop().then(v => v ? this.popoverCtrl.dismiss() : null);
+      })
 
-    })
+    }))
+  }
+
+  removeChip(chip: Badges, path: string){
+    this.popbadge[path] = this.popbadge[path].filter(b=>b.id!==chip.id);
+  }
+
+  ngOnDestroy(){
+    this.subs.unsubscribe();
+    this.popoverCtrl.getTop().then(v => v ? this.popoverCtrl.dismiss() : null);
+  }  
+
+  outputFromRedeemer(event: CustomEvent, path: string){
+    console.log("io mario pio", event);
+    this.popbadge[path] = event;
   }
 
 }

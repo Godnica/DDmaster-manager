@@ -3,9 +3,6 @@ import { Router , ActivatedRoute} from '@angular/router';
 import { DataSnapshot } from 'firebase/database';
 import { FiredbService } from 'src/app/core/services/firedb.service';
 import { ModalController } from '@ionic/angular';
-import { AdventureModalComponent } from 'src/app/core/components/adventure-modal/adventure-modal.component';
-import { NotasComponent } from 'src/app/core/components/items/notas/notas.component';
-import { NotasModalComponent } from 'src/app/core/components/notas-modal/notas-modal.component';
 import { ControllerService } from 'src/app/core/services/controller.service';
 
 @Component({
@@ -41,8 +38,8 @@ export class ListPage implements OnInit {
     })
   }
 
-  ngOnInit() {
-
+  ngOnInit() {    
+    
     this.route.paramMap.subscribe(params=>{
       this.idAdv = params.get('id_adv')
       this.path = params.get('param');
@@ -83,6 +80,10 @@ export class ListPage implements OnInit {
       case "badges":
         this.buttontitle = "Crea una nuova nota per la tua avventura"
         this.title ="Controlli"
+        break;
+      case "pg":
+        this.buttontitle = "Crea una nuova nota per la tua avventura"
+        this.title ="Il gruppo"
         break;
       default:
         break;

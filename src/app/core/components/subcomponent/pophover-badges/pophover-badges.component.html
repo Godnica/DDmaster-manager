@@ -1,3 +1,12 @@
-<p>
-  pophover-badges works!
-</p>
+<ion-button
+  *ngFor="let badge of badges"
+  (click)="addtotoshow(badge)"
+>
+  {{badge.name}}
+</ion-button>
+<ion-button (click)="dismiss()" class="ion-float-right" fill="clear">
+  <ion-icon
+    name="close-outline"
+  >
+  </ion-icon>
+</ion-button>

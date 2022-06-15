@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="formPg">
+    <ion-item>
+      <ion-label>Giocatore:</ion-label>
+      <ion-input type="text" formControlName="giocatore"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nome:</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Livello:</ion-label>
+      <ion-input type="number" formControlName="level" (ionChange)="levelSet($event)" min="1" max="20"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Esperienza:</ion-label>
+      <ion-input type="number" formControlName="exp" min="{{min}}" max="{{max}}"></ion-input>
+    </ion-item>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-button expand="block" (click)="createPg()">
+    Invia
+  </ion-button>
+</ion-footer>

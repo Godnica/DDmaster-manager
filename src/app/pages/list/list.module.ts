@@ -20,6 +20,10 @@ import { BadgesComponent } from 'src/app/core/components/items/badges/badges.com
 import { FormSkillComponent } from 'src/app/core/components/forms/skill/skill.component';
 import { PophoverDifficultyComponent } from 'src/app/core/components/subcomponent/pophover-difficulty/pophover-difficulty.component';
 import { PophoverBadgesComponent } from 'src/app/core/components/subcomponent/pophover-badges/pophover-badges.component';
+import { RedeemerComponent } from 'src/app/core/components/subcomponent/redeemer/redeemer.component';
+import { PgsComponent } from 'src/app/core/components/items/pgs/pgs.component';
+import {PgModalComponent} from 'src/app/core/components/pg-modal/pg-modal.component';
+import { ItemCondictionComponent } from 'src/app/core/components/subcomponent/item-condiction/item-condiction.component';
 
 @NgModule({
   imports: [
@@ -43,7 +47,11 @@ import { PophoverBadgesComponent } from 'src/app/core/components/subcomponent/po
     BadgesComponent,
     FormSkillComponent,
     PophoverDifficultyComponent,
-    PophoverBadgesComponent
+    PophoverBadgesComponent,
+    RedeemerComponent,
+    PgsComponent,
+    PgModalComponent,
+    ItemCondictionComponent
   ],
   entryComponents: [
     FormSkillComponent

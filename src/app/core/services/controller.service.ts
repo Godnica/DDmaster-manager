@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Badges } from '../models/badges.model';
 
 @Injectable({
@@ -7,7 +7,8 @@ import { Badges } from '../models/badges.model';
 })
 export class ControllerService {
 
-  public BadgesArr = new Subject();
+  public BadgesArr = new BehaviorSubject<Array<Badges>>([]);
+  public badges = this.BadgesArr.asObservable();
   
   constructor() { }
 

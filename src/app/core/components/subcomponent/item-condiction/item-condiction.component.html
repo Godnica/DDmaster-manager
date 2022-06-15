@@ -1,0 +1,7 @@
+<ion-item *ngIf="condictions.length!=0" lines="none">
+  <ion-chip *ngFor="let condiction of condictions">
+    <ion-icon name="{{condiction.ico}}" color="primary"></ion-icon>
+    <ion-label>{{condiction.name}}</ion-label>
+    <ion-icon name="trash" (click)="delete(condiction)"></ion-icon>
+  </ion-chip>
+</ion-item>
