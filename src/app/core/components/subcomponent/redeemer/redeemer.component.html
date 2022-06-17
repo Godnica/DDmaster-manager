@@ -3,7 +3,7 @@
     <ion-label>
       {{label}}
     </ion-label>
-    <ion-textarea *ngIf="isready" autoGrow="true" [(ngModel)]="description" placeholder="{{placeholder}}"></ion-textarea>
+    <ion-textarea *ngIf="isready" autoGrow="true" placeholder="{{placeholder}}"></ion-textarea>
     <ion-button class="ion-margin-top" fill="none" (click)="showPopBadge()" *ngIf="badgesIn.length!=0 && badgeOut.length!==badgesIn.length">
       <ion-icon name="add-outline"></ion-icon>
     </ion-button>

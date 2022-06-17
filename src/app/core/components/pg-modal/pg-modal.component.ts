@@ -47,7 +47,7 @@ export class PgModalComponent implements OnInit {
     this.modalController.dismiss();
   }
 
-  levelSet(event: CustomEvent){
+  levelSet(event: any){
     if(event.detail.value!=20){
       this.min = lev_exp.find(el=>Object.keys(el)[0] == event.detail.value )[event.detail.value];
       this.max = lev_exp.find(el=>Object.keys(el)[0] == (Number(event.detail.value)+1).toString())[(Number(event.detail.value)+1).toString()];

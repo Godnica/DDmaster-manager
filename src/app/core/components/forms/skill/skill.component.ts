@@ -125,7 +125,7 @@ export class FormSkillComponent implements OnInit {
     this.popoverCtrl.getTop().then(v => v ? this.popoverCtrl.dismiss() : null);
   }  
 
-  outputFromRedeemer(event: CustomEvent, path: string){
+  outputFromRedeemer(event: Badges[], path: string){
     console.log("io mario pio", event);
     this.popbadge[path] = event;
   }
