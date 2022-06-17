@@ -26,6 +26,7 @@ import {PgModalComponent} from 'src/app/core/components/pg-modal/pg-modal.compon
 import { ItemCondictionComponent } from 'src/app/core/components/subcomponent/item-condiction/item-condiction.component';
 import { TreasureComponent } from 'src/app/core/components/items/treasure/treasure.component';
 import { CumuloComponent } from 'src/app/core/components/subcomponent/cumulo/cumulo.component';
+import { FightsComponent } from 'src/app/core/components/items/fights/fights.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -54,7 +55,8 @@ import { CumuloComponent } from 'src/app/core/components/subcomponent/cumulo/cum
     PgModalComponent,
     ItemCondictionComponent,
     TreasureComponent,
-    CumuloComponent
+    CumuloComponent,
+    FightsComponent
   ],
   entryComponents: [   //?????'
     FormSkillComponent

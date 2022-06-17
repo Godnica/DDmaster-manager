@@ -88,6 +88,9 @@ export class ListPage implements OnInit {
       case "treasure":
         this.title = "Tesoro";
         break
+      case "fights":
+        this.title = "Incontri";
+        break
       default:
         break;
     }

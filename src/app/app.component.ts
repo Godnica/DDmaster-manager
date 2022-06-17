@@ -11,6 +11,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Note', url: '/notas/', icon: 'mail' },
     { title: 'Abilità', url: '/skills/', icon: 'ear' },
+    { title: 'Incontri', url: '/fights/', icon: 'skull' }
     // { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
     // { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
     // { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
