@@ -1,0 +1,33 @@
+<ion-item *ngIf="items">
+  <ion-label class="ion-text-wrap">
+    Il tesoro è concepito come <ion-text color="primary">cumulo di tesori.</ion-text>
+    <ion-text class="ion-float-left">
+      Da questo pannello è possibile assegnare i tesori agli incontri, selezionando l'incontro e selezionando il cumulo da cui si vogliono sottrarre i tesori!
+    </ion-text>
+  </ion-label>  
+  <ion-icon name="information-circle-outline" id="popInfoCumulo"></ion-icon>
+</ion-item>
+
+<ion-popover trigger="popInfoCumulo">
+  <ng-template>    
+    <ion-content class="ion-padding">
+      DM può elargire tesori con la generosità o la parsimonia che ritiene più opportuna. Nel corso di una tipica campagna, un gruppo dovrebbe trovare una serie di cumuli di tesori pari a sette tiri sulla tabella "Sfida O-4", diciotto tiri sulla tabella "Sfida 5-10", dodici tiri sulla tabella "Sfida 11-16" e otto tiri sulla tabella "Sfida 17 o più". 
+    </ion-content>
+  </ng-template>
+</ion-popover>
+
+<ion-button slot="center" fill="none" expand="block" (click)="generateLoot()">
+  Genera Tesori
+  <ion-icon name="add-circle-outline" size="large" color="primary"></ion-icon>
+</ion-button>
+
+
+<ion-list *ngIf="items && items.length!=0">
+  <div *ngFor="let cumolo of items">
+    <app-cumulo [cumolo]="cumolo" 
+    (moneyDropper)="emitMoneyDrop($event)"
+    (oGDropper)="emitOgDrop($event)"
+    (magicDropper)="emitMagicDrop($event)"
+    ></app-cumulo>
+  </div>
+</ion-list>

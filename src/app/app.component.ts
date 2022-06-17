@@ -19,7 +19,8 @@ export class AppComponent {
   public labels = [
     // { title: 'Calendario', url: '//', icon: 'calendar' },
     { title: 'Controlli', url: '/badges/', icon: 'cog' },
-    { title: 'Gruppo', url: '/pg/', icon: 'people' }
+    { title: 'Gruppo', url: '/pg/', icon: 'people' },
+    { title: 'Tesoro', url: '/treasure/', icon: 'diamond'}
   ];
   idAdv
   menu_visible!:boolean;

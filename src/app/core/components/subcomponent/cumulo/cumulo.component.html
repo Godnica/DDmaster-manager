@@ -1,0 +1,55 @@
+<ion-item button>
+  <ion-grid>
+    <ion-label color="warning">
+      Monete
+      <ion-icon name="cash-outline"></ion-icon>
+    </ion-label>
+    <ion-row class="ion-justify-content-between">
+      <ion-col *ngIf="cumolo.monete.mr">
+        <ion-chip (click)="assignMoney('mr')">Rame: {{cumolo.monete.mr}}</ion-chip>
+      </ion-col>
+      <ion-col *ngIf="cumolo.monete.ma">
+        <ion-chip (click)="assignMoney('ma')">
+          Argento: {{cumolo.monete.ma}}
+        </ion-chip>
+
+      </ion-col>
+      <ion-col *ngIf="cumolo.monete.mo">
+        <ion-chip (click)="assignMoney('mo')">
+          Oro: {{cumolo.monete.mo}}
+        </ion-chip>
+      </ion-col>
+      <ion-col *ngIf="cumolo.monete.mp">
+        <ion-chip (click)="assignMoney('mp')">
+          Platino: {{cumolo.monete.mp}}
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+      <ion-label color="warning" *ngIf="cumolo.other">
+        Tipo di oggetto prezioso: {{cumolo.other.other.type}}, {{cumolo.other.other.value}} l'uno
+        <ion-icon name="diamond-outline"></ion-icon>
+      </ion-label>
+      <!-- <ul *ngIf="cumolo.other">
+        <li *ngFor="let item of cumolo.other.data">
+          {{item}}
+        </li>
+      </ul> -->
+      <div *ngIf="cumolo.other && cumolo.other.other.data">
+        <ion-chip *ngFor="let og of cumolo.other.other.data" (click)="assignOG(og, cumolo.other.other.type, cumolo.other.other.value)">
+          {{og}}
+        </ion-chip>       
+      </div>
+      <ion-label color="tertiary" *ngIf="cumolo.other && cumolo.other.magic">
+        Oggetti magici 
+        <ion-icon name="color-wand-outline"></ion-icon>
+      </ion-label>
+      <div *ngIf="cumolo.other && cumolo.other.magic">
+        <ion-chip *ngFor="let magic of cumolo.other.magic" (click)="assignMagic(magic)">
+          {{magic}}
+        </ion-chip>
+      </div>
+      <ion-label color="medium">
+        Tabella {{cumolo.divider_title}}
+      </ion-label>
+  </ion-grid>
+</ion-item>

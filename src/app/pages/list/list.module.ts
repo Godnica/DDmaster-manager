@@ -24,7 +24,8 @@ import { RedeemerComponent } from 'src/app/core/components/subcomponent/redeemer
 import { PgsComponent } from 'src/app/core/components/items/pgs/pgs.component';
 import {PgModalComponent} from 'src/app/core/components/pg-modal/pg-modal.component';
 import { ItemCondictionComponent } from 'src/app/core/components/subcomponent/item-condiction/item-condiction.component';
-
+import { TreasureComponent } from 'src/app/core/components/items/treasure/treasure.component';
+import { CumuloComponent } from 'src/app/core/components/subcomponent/cumulo/cumulo.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -51,9 +52,11 @@ import { ItemCondictionComponent } from 'src/app/core/components/subcomponent/it
     RedeemerComponent,
     PgsComponent,
     PgModalComponent,
-    ItemCondictionComponent
+    ItemCondictionComponent,
+    TreasureComponent,
+    CumuloComponent
   ],
-  entryComponents: [
+  entryComponents: [   //?????'
     FormSkillComponent
   ]
 })

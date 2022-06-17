@@ -85,6 +85,9 @@ export class ListPage implements OnInit {
         this.buttontitle = "Crea una nuova nota per la tua avventura"
         this.title ="Il gruppo"
         break;
+      case "treasure":
+        this.title = "Tesoro";
+        break
       default:
         break;
     }
