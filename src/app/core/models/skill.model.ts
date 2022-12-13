@@ -2,6 +2,8 @@ import { Badges } from "./badges.model"
 
 export interface Skill{
     id: string,
+    title?: string
+    description?: string
     id_adv: string
     cd: number
     active?: boolean
@@ -10,6 +12,10 @@ export interface Skill{
     critical_success?: Array<Badges|string>,
     fail?: string,
     critical_fail?: string
+    badge_success?: Array<Badges|string>
+    badge_critical_success?: Array<Badges|string>,
+    badge_fail? : Array<Badges|string>,
+    badge_critical_fail?: Array<Badges|string>,
     badges_need?: Array<Badges>
     ripetible: boolean
 }
@@ -39,41 +45,59 @@ export enum tskills{
 export abstract class utility{
     static readonly skills = [
         {name: "Atletica",
+        color: "", 
         car: "Forza"},
         {name: "Acrobazia",
+        color: "", 
         car: "Destrezza"},
         {name: "Furtività",
+        color: "", 
         car: "Destrezza"},
         {name: "Rapidità di mano",
+        color: "", 
         car: "Destrezza"},
         {name: "Arcano",
+        color: "", 
         car: "Intelligenza"},
         {name: "Indagare",
+        color: "", 
         car: "Intelligenza"},
         {name: "Natura",
+        color: "", 
         car: "Intelligenza"},
         {name: "Medicina",
+        color: "", 
         car: "Intelligenza"},
         {name: "Religione",
+        color: "", 
         car: "Intelligenza"},
         {name: "Storia",
+        color: "", 
         car: "Intelligenza"},
         {name: "Addestrare animali",
+        color: "#c919c9", 
         car: "Saggezza"},
         {name: "Percezione",
+        color: "#c919c9", 
         car: "Saggezza"},
         {name: "Intuizione",
+        color: "#c919c9", 
         car: "Saggezza"},
         {name: "Sopravvivenza",
+        color: "#c919c9", 
         car: "Saggezza"},
         {name: "Inganno",
-        car: "Carisma"},
+        color: "", 
+        car:"carisma"},
         {name: "Intimidire",
-        car: "Carisma"},
+        color: "", 
+        car: "carisma"},
         {name: "Intrattenere",
-        car: "Carisma"},
+        color: "", 
+        car: "carisma"},
         {name: "Persuazione",
-        car: "Carisma"}
+        color: "", 
+        car: "carisma"}
     ]
 }
 

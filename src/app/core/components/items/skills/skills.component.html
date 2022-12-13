@@ -1,4 +1,4 @@
-<ion-card *ngIf="!items || items.length === 0">
+<ion-card *ngIf="!items || items.length === 0; else skillsList">
   <ion-card-header>
     <ion-card-title>
       Aggiungi un'abilità alla tua avventura!
@@ -21,8 +21,13 @@
   </ion-card-content>
 </ion-card>
 
+<ng-template #skillsList>
+  <app-skill-list 
+    [skills]="items"
+    [path]="'/skills'"
+    (OutSkill)="out($event)"
+  >
+  </app-skill-list>
+</ng-template>
 
 
-<ion-button slot="center" fill="none" expand="block" (click)="newAdventure()" >
-  <ion-icon name="add-circle-outline" size="large" color="primary"></ion-icon>
-</ion-button>

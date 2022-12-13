@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Condictions, Pg } from 'src/app/core/models/pg.model';
 import { ModalController } from '@ionic/angular';
 import { PgModalComponent } from '../../pg-modal/pg-modal.component';
@@ -28,7 +28,8 @@ export class PgsComponent implements OnInit {
     if(!this.items){
       this.items = []
     }  
-    console.log(this.items)
+    console.log("....>", this.items);
+    
   }
 
   async createPg(){

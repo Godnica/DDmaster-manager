@@ -1,6 +1,6 @@
 <ion-accordion-group>
   <ion-accordion value="colors">
-    <ion-item slot="header">
+    <ion-item slot="header" color="light">
       <ion-title class="ion-margin">
         <ion-label>
           <ion-icon name="skull"></ion-icon>
@@ -8,7 +8,6 @@
         </ion-label>
       </ion-title>
     </ion-item>
-
     <ion-list slot="content">
       <div class="ion-padding">
         <ion-label class="ion-text-wrap">
@@ -27,3 +26,7 @@
     </ion-list>
   </ion-accordion>
 </ion-accordion-group>
+
+<ion-button slot="center" expand="block" (click)="createMetch()" fill="none">
+  <ion-icon name="add-circle-outline" color="primary" size="large"></ion-icon>
+</ion-button>

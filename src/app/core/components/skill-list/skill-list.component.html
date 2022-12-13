@@ -1,0 +1,32 @@
+
+  <ion-list>
+    <ion-item *ngFor="let skill of skills">
+      <ion-label>
+        <h2>
+          {{skill.title}}
+        </h2>        
+          <ion-text class="{{skill.class}}">
+            {{skill.type}}
+          </ion-text>
+        <p>
+          {{skill.description}}
+        </p>
+      </ion-label>
+      <ion-label slot="end">
+        CD :{{skill.cd}}
+      </ion-label>
+      <ion-button slot="end" (click)="editAbility(skill)">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" (click)="deleteSkill(skill)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+      
+    </ion-item>
+  </ion-list>
+
+
+  <ion-button slot="center" fill="none" expand="block" (click)="newAdventure()" >
+    <ion-icon name="add-circle-outline" size="large" color="primary"></ion-icon>
+  </ion-button>
+

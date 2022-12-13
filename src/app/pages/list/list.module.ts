@@ -27,6 +27,11 @@ import { ItemCondictionComponent } from 'src/app/core/components/subcomponent/it
 import { TreasureComponent } from 'src/app/core/components/items/treasure/treasure.component';
 import { CumuloComponent } from 'src/app/core/components/subcomponent/cumulo/cumulo.component';
 import { FightsComponent } from 'src/app/core/components/items/fights/fights.component';
+import { FightComponent } from 'src/app/core/components/fight/fight.component';
+import { MonsterComponent } from 'src/app/core/components/subcomponent/monster/monster.component';
+import { SkillListComponent } from 'src/app/core/components/skill-list/skill-list.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -34,9 +39,7 @@ import { FightsComponent } from 'src/app/core/components/items/fights/fights.com
     IonicModule,
     ListPageRoutingModule,
     SharedComponentsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    
+    ReactiveFormsModule,    
   ],
   declarations: [
     ListPage, 
@@ -56,7 +59,10 @@ import { FightsComponent } from 'src/app/core/components/items/fights/fights.com
     ItemCondictionComponent,
     TreasureComponent,
     CumuloComponent,
-    FightsComponent
+    FightsComponent,
+    FightComponent,
+    MonsterComponent,
+    SkillListComponent
   ],
   entryComponents: [   //?????'
     FormSkillComponent

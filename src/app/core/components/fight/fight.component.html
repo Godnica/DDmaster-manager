@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Incontro    
+    </ion-title>
+    
+    <ion-button slot="end" (click)="dismissModal()" fill="clear">
+      <ion-icon name="close-outline" color="light"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content>
+    <form [formGroup]=fightForm>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            Titolo: 
+          </ion-label>
+          <ion-input formControlName="title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Descrizione: 
+          </ion-label>
+          <ion-input formControlName="description"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="monsters.length>0">
+          <ion-label>
+            Difficoltà: {{typeOfIncontro}}     
+          </ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="monsters.length>0">
+          <ion-label>
+            PE: {{totExp}}     
+          </ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="monsters.length>0"  class="ion-text-wrap">
+          
+          <ion-label class="ion-text-wrap">
+            <ion-chip *ngFor="let monster of monsters; let i = index">
+              
+              <ion-icon name="add" (click)="addAnother(monster)"></ion-icon>
+              <ion-icon name="skull" class="ion-margin-end" color="primary"></ion-icon>
+              <ion-label>{{monster.name}}</ion-label>
+              <ion-icon name="close-outline" (click)="deleteMonster(monster, i)"></ion-icon>
+            </ion-chip>
+          </ion-label>
+            
+          
+        </ion-item>
+      </ion-list>
+    </form>
+    <app-monster (buttonClicked)="addMonster($event)"></app-monster>
+  </ion-content>
+
+
+
+
+
+
+<ion-footer>
+    <ion-button expand="block" (click)="insertFight()">Crea combattimento</ion-button>
+</ion-footer>

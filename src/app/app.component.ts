@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Event, RouterEvent, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { ControllerService } from './core/services/controller.service';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,7 @@ export class AppComponent {
 
   constructor(
     private router:Router,
+    private readonly controller: ControllerService
   ) {
   }
     
@@ -40,6 +42,9 @@ export class AppComponent {
    ).subscribe((e: RouterEvent) => {
       this.idAdv = e.url.split("/")[2];
       this.menu_visible = this.idAdv ? true : false
+      if(this.idAdv){
+        this.controller.idAdv = this.idAdv;
+      }
     });
   }
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { FormSkillComponent } from '../../forms/skill/skill.component';
+// import { ModalController } from '@ionic/angular';
+// import { FormSkillComponent } from '../../forms/skill/skill.component';
+import { FiredbService } from 'src/app/core/services/firedb.service';
 
 
 
@@ -13,7 +14,7 @@ export class SkillsComponent implements OnInit {
   @Input() idAdv
   @Input() items = []
   constructor(
-    private modalCtrl: ModalController
+    private fire: FiredbService
   ) { }
 
   ngOnInit() {
@@ -23,18 +24,24 @@ export class SkillsComponent implements OnInit {
     )
   }
 
-
-  async newAdventure(){
-    const modal = await this.modalCtrl.create({
-      component: FormSkillComponent,
-      componentProps: {
-        title: "Crea una nuova abilità",
-        idAdv: this.idAdv
-      }
-    })
-
-    await modal.present()
-
+  async out(el:any){
+    
+    if(el?.role){
+      el.role!= "new" ?
+        await this.fire.update(`skills/${el.data.id}`, el.data ).then(()=>{
+        location.reload()
+      })
+        :
+      await this.fire.add("skills", el.data).then(el=>{
+        location.reload()
+      });
+    }else{
+      await this.fire.deleteById(`skills/${el.id}`).then(()=>{
+        location.reload()
+      })
+    }
   }
+
+  
 
 }

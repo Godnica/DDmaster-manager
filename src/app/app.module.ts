@@ -14,6 +14,7 @@ import { SharedComponentsModule } from './sharedComponents/shared-components.mod
 import { CommonModule } from '@angular/common';
 
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,7 +27,10 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
 
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

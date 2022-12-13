@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { magicTable, otherLoot, Treasure } from 'src/app/core/models/treasure.model';
 import { tabs } from 'src/app/core/models/treasure.model';
-
+import { FiredbService } from 'src/app/core/services/firedb.service';
 @Component({
   selector: 'app-treasure',
   templateUrl: './treasure.component.html',
@@ -10,6 +10,9 @@ import { tabs } from 'src/app/core/models/treasure.model';
 export class TreasureComponent implements OnInit {
   @Input() idAdv: string;
   @Input() items = [];
+  save_visible: boolean = false;
+  update_visible:boolean = false;
+  id_fire?:string
   public assigner ={
     monete: {
       mr: 0,
@@ -22,13 +25,16 @@ export class TreasureComponent implements OnInit {
   }
 
   constructor(
+    private firebaseService: FiredbService
   ) { }
 
   ngOnInit() {
-    console.log(this.items);
-    if(!this.items) this.items = []
+    if(this.items.length!=0 && this.items.find(el=>el.id_adv===this.idAdv).length!=0){
+      this.id_fire = this.items.find(el=>el.id_adv===this.idAdv).id;
+      console.log(this.id_fire);
+      this.items = this.items.find(el=>el.id_adv===this.idAdv).treasure;
+    }
   }
-
 
   ngOnChanges(changes: SimpleChange){
     console.log("cambio?")
@@ -57,6 +63,8 @@ export class TreasureComponent implements OnInit {
 
     console.log("let's finish");
     console.log(this.items);
+
+    this.save_visible = true;
     
   }
 
@@ -177,6 +185,7 @@ export class TreasureComponent implements OnInit {
     this.items.find(cum=>cum.id===event.id).monete[event.money_type] = this.items.find(cum=>cum.id===event.id).monete[event.money_type] - event.quantity;     
     this.assigner.monete[event.money_type] =  this.assigner.monete[event.money_type] ? this.assigner.monete[event.money_type] + event.quantity : event.quantity;
     console.log(this.assigner)
+    this.update_visible = true
   }
 
 
@@ -185,14 +194,40 @@ export class TreasureComponent implements OnInit {
     this.items.find(cum=>cum.id===event.id).other.other.data =  this.items.find(cum=>cum.id===event.id).other.other.data.filter(og=>og!=event.og);
     this.assigner.other.push(event);
     console.log(this.assigner);
+    this.update_visible = true
   }
 
 
   emitMagicDrop(event:any){
     this.items.find(cum=>cum.id===event.id).other.magic = this.items.find(cum=>cum.id===event.id).other.magic.filter(magic=>magic!=event.magic);
     this.assigner.magic.push(event);
+    this.update_visible = true
   }
 
+
+  save(){
+    this.save_visible = false;
+    const pay = {
+      id_adv: this.idAdv,
+      treasure: this.items
+    }
+    this.firebaseService.add("treasure", pay);
+  }
+
+  update(){
+
+    console.log(this.assigner);
+
+    //Questa parte è giusta!
+
+    // const pay = {
+    //   id_adv: this.idAdv,
+    //   treasure: this.items
+    // }
+
+    // this.firebaseService.update(`treasure/${this.id_fire}`, pay);
+    // this.update_visible = false;
+  }
 
 }
 

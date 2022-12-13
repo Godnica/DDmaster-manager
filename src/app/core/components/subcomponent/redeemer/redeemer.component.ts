@@ -18,6 +18,7 @@ export class RedeemerComponent implements OnInit {
   badgesIn: Array<Badges> = [];
   @Input() badgeOut: Array<Badges> = [];
   @Input() type: string = 'ribbon';
+  @Input() binding
 
   subs:Subscription = new Subscription();
   isready: boolean = false;
@@ -61,7 +62,8 @@ export class RedeemerComponent implements OnInit {
         if(res.data)
         {
         this.badgeOut = [...res.data, ...this.badgeOut];
-        this.badgeOutput.emit(this.badgeOut);}
+        this.badgeOutput.emit(this.badgeOut)
+      }
       })
 
     }))    
@@ -75,6 +77,13 @@ export class RedeemerComponent implements OnInit {
 
   ngOnDestroy(){
     this.subs.unsubscribe();
+  }
+
+  setValue($event:Event){
+    const a = $event as CustomEvent
+    this.binding = a.detail.value
+    this.badgeOutput.emit(this.badgeOut)
+    
   }
 
 }

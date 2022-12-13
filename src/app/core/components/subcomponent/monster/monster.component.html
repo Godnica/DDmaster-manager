@@ -1,0 +1,35 @@
+
+<ion-button expand="block" (click)="addMonster()" fill="none">
+  Aggiungi Nemico
+</ion-button>
+
+<ion-card *ngIf="monsterFormvisible">
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          nome: 
+        </ion-label>
+        <ion-input (ionChange)="fillChar('name', $event)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          vita: 
+        </ion-label>
+        <ion-input (ionChange)="fillChar('life', $event)"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          Grado sfida: 
+        </ion-label>
+        <!-- <ion-input type="number" (ionChange)="fillChar('gs', $event)"></ion-input> -->
+        <ion-select (ionChange)="fillChar('gs', $event)">
+          <ion-select-option *ngFor="let item of expLevel" value="{{item.level}}">{{item.label}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>  
+  </form>
+  <ion-button *ngIf="addVisible" (click)="add_()" fill="none" expand="block">
+    <ion-icon name="add-circle-outline"></ion-icon>
+  </ion-button>
+</ion-card>

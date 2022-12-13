@@ -12,7 +12,7 @@ export class FiredbService {
 
   constructor(private firestore: Firestore) { }
 
-  add(path: string, payload:Payload){
+  add(path: string, payload:any){
     const postList = ref(this.db, path);
     const newPostref = push(postList)
     set(newPostref, payload)

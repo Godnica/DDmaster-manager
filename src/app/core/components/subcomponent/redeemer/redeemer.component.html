@@ -1,21 +1,17 @@
-<ion-card >
+<div *ngIf="badgesIn.length>0">
   <ion-item lines="none">
     <ion-label>
       {{label}}
     </ion-label>
-    <ion-textarea *ngIf="isready" autoGrow="true" placeholder="{{placeholder}}"></ion-textarea>
     <ion-button class="ion-margin-top" fill="none" (click)="showPopBadge()" *ngIf="badgesIn.length!=0 && badgeOut.length!==badgesIn.length">
       <ion-icon name="add-outline"></ion-icon>
     </ion-button>
   </ion-item>
   <ion-item *ngIf="badgeOut.length!==0">
-    <ion-label>
-      Badge riscossi in caso di {{label}}
-    </ion-label>
       <ion-chip *ngFor="let badge of badgeOut">
         <ion-icon name="{{type}}-outline"></ion-icon>
         <ion-label>{{badge.name}}</ion-label>
         <ion-icon name="close" (click)="removeChip(badge)"></ion-icon>
       </ion-chip>
   </ion-item>
-</ion-card>
+</div>

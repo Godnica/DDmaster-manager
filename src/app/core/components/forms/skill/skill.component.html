@@ -26,7 +26,7 @@
         <ion-textarea *ngIf="ready" placeholder="In che cosa consiste la prova" formControlName="description" autoGrow="true"></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-select placeholder="Seleziona" class="interfaceOptions" interface="popover" formControlName="type">      
+        <ion-select placeholder="Seleziona" class="interfaceOptions" interface="popover" formControlName="type" (ionChange)="changeSelect($event)">      
           <ion-select-option *ngFor="let item of skillsModels" class="{{item.car}}">
               {{item.name}}
           </ion-select-option>
@@ -50,13 +50,83 @@
       </ion-item>
     </ion-list>
 
-    <app-redeemer 
-      [label]="'Successo'"
-      [placeholder]="'Descrivi cosa succede in caso di successo'"
-      (badgeOutput)="outputFromRedeemer($event, 'success')"
-      
-    ></app-redeemer>
+    <ion-card>
+      <ion-item>
+        <ion-label>
+          Successo
+        </ion-label>
+        <ion-input formControlName="success" placeholder="Descrizione successo">
+  
+        </ion-input>
+      </ion-item>
+      <app-redeemer 
+        [label]="'Badge riscossi in caso di successo'"
+        [placeholder]="'Descrivi cosa succede in caso di successo'"
+        (badgeOutput)="outputFromRedeemer($event, 'badge_success')"
+        [badgeOut] = "popbadge.badge_success"
+      ></app-redeemer>
+    </ion-card>
+  
+    <ion-card>
+      <ion-item>
+        <ion-label>
+          Successo Critico
+        </ion-label>
+        <ion-input formControlName="critical_success" placeholder="Descrizione successo critico">
+  
+        </ion-input>
+      </ion-item>
+      <app-redeemer 
+        [label]="'Badge riscossi in caso di successo critico'"
+        [placeholder]="'Descrivi cosa succede in caso di successo critico'"
+        (badgeOutput)="outputFromRedeemer($event, 'badge_critical_success')"
+        [badgeOut] = "popbadge.badge_critical_success"      
+      ></app-redeemer>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-label>
+          Fail
+        </ion-label>
+        <ion-input formControlName="fail" placeholder="Descrizione fail">
+  
+        </ion-input>
+      </ion-item>
+      <app-redeemer 
+        [label]="'Badge riscossi in caso di fail'"
+        [placeholder]="'Descrivi cosa succede in caso di fail'"
+        (badgeOutput)="outputFromRedeemer($event, 'badge_fail')"      
+        [badgeOut] = "popbadge.badge_fail"
+      ></app-redeemer>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-label>
+          Fail Critica
+        </ion-label>
+        <ion-input formControlName="critical_fail" placeholder="Descrizione in caso di fail critica">
+  
+        </ion-input>
+      </ion-item>
+      <app-redeemer 
+        [label]="'Badge riscossi in caso di fail critico'"
+        [placeholder]="'Descrivi cosa succede in caso di critical fail'"
+        (badgeOutput)="outputFromRedeemer($event, 'badge_critical_fail')"   
+        [badgeOut] = "popbadge.badge_critical_fail"   
+      ></app-redeemer>
+    </ion-card>
 
 
   </form>
+
+  
+
 </ion-content>
+
+<ion-footer>
+  <ion-button expand="block" (click)="crateSkill()">
+    Crea Abilità
+  </ion-button>
+</ion-footer>
