@@ -29,7 +29,11 @@ export class TreasureComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.items.length!=0 && this.items.find(el=>el.id_adv===this.idAdv).length!=0){
+
+    console.log(this.idAdv)
+
+
+    if(this.items && this.items.length!=0 && this.items.find(el=>el.id_adv===this.idAdv).length!=0){
       this.id_fire = this.items.find(el=>el.id_adv===this.idAdv).id;
       console.log(this.id_fire);
       this.items = this.items.find(el=>el.id_adv===this.idAdv).treasure;
@@ -191,7 +195,14 @@ export class TreasureComponent implements OnInit {
 
   emitOgDrop(event:any){
     console.log("--->",event);
-    this.items.find(cum=>cum.id===event.id).other.other.data =  this.items.find(cum=>cum.id===event.id).other.other.data.filter(og=>og!=event.og);
+
+    console.log(this.items.find(cum=>cum.id===event.id).other.other.data);
+
+    console.log(event.og); 
+
+    const first_find= this.items.find(cum=>cum.id===event.id).other.other.data.findIndex(el=>el==event.og);
+
+    this.items.find(cum=>cum.id===event.id).other.other.data.splice(first_find,1);
     this.assigner.other.push(event);
     console.log(this.assigner);
     this.update_visible = true
@@ -199,34 +210,49 @@ export class TreasureComponent implements OnInit {
 
 
   emitMagicDrop(event:any){
-    this.items.find(cum=>cum.id===event.id).other.magic = this.items.find(cum=>cum.id===event.id).other.magic.filter(magic=>magic!=event.magic);
+
+    console.log(event);
+
+    const first_find = this.items.find(cum=>cum.id===event.id).other.magic.findIndex(el=>el===event.magic);
+
+    this.items.find(cum=>cum.id===event.id).other.magic.splice(first_find,1);
     this.assigner.magic.push(event);
     this.update_visible = true
   }
 
 
   save(){
-    this.save_visible = false;
-    const pay = {
-      id_adv: this.idAdv,
-      treasure: this.items
-    }
-    this.firebaseService.add("treasure", pay);
+
+    console.log("siamo qui", this.items);
+
+      const pay = {
+        id_adv: this.idAdv,
+        treasure: this.items
+      }
+      this.firebaseService.update(`treasure/${this.idAdv}`, pay);
+
+
+    // if(!this.items.length){
+    //   this.save_visible = false;
+    
+    // }else{
+    //   this.firebaseService.update(`treasure/-NQ5caG-fOVLzUG8sMWU`, this.items);
+    // }
+
   }
 
   update(){
 
-    console.log(this.assigner);
-
+    
     //Questa parte è giusta!
 
-    // const pay = {
-    //   id_adv: this.idAdv,
-    //   treasure: this.items
-    // }
+    const pay = {
+      id_adv: this.idAdv,
+      treasure: this.items
+    }
 
-    // this.firebaseService.update(`treasure/${this.id_fire}`, pay);
-    // this.update_visible = false;
+    this.firebaseService.update(`treasure/${this.id_fire}`, pay);
+    this.update_visible = false;
   }
 
 }

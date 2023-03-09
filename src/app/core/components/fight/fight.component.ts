@@ -5,6 +5,7 @@ import { difficulty } from '../../models/incontri.model';
 import { FiredbService } from '../../services/firedb.service';
 import { tebleExpXMonster } from '../../models/incontri.model';
 import { DifficultyCalculator } from '../../models/incontri.model';
+import { Pg } from '../../models/pg.model';
 
 @Component({
   selector: 'app-fight',
@@ -54,18 +55,20 @@ export class FightComponent implements OnInit {
     console.log("---_>", difficulty);
     if(!this.group){
       await this.fireDb.collection('pg').then(el=>{
-        const result = el.val();
-        const arrK =  Object.keys(result)
-        const number = arrK.length;
-        arrK.forEach(el=>{
-          console.log(result[el])
-        })
-        const level = arrK.map(a=> result[a].level).reduce((a,b)=>a+b);                
+        const result = Object.values(el.val()).filter((el:Pg)=>el.id_adv ==this.idAdv);
+
+        const nPg = result.length;
+        const level = Math.floor(
+          result.map((el:Pg)=>el.level).reduce((a,b)=>a+b)/nPg
+        )
+
         this.group = {
-          number : number,
-          level: Math.floor(level/number)
-        }      
+          number : nPg,
+          level: level
+        }
+
       })
+    
     }
    
   }
@@ -123,5 +126,16 @@ export class FightComponent implements OnInit {
 
   dismissModal(){
     this.modal.dismiss();
+  }
+
+  insertFight(){
+    console.log(this.fightForm.value);
+
+    this.fightForm.get('total_exp').setValue(this.totExp);
+
+    this.fireDb.add("fights",this.fightForm.value).then(()=>
+      this.modal.dismiss()
+    )
+    // this.fireDb.add()
   }
 }

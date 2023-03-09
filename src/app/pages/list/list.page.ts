@@ -49,6 +49,9 @@ export class ListPage implements OnInit {
       this.fireDb.collection(this.path).then((items:DataSnapshot)=>{
         
         this.items = items.val();
+
+        console.log(this.items)
+
         if(params.get('id_adv') && this.items){
           let newItem = []
           Object.keys(this.items).forEach(element => {
